@@ -4,3 +4,6 @@ node_modules
 # Development
 coverage
 yarn-error.log
+
+# External Libraries
+.coveralls.yml

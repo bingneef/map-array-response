@@ -1,5 +1,15 @@
 {
-  "dependencies": {
+  "author": "Bing Steup",
+  "name": "map-array-response",
+  "version": "0.0.1-e",
+  "description": "Map array responses on an object field",
+  "main": "dist/map-array-response.js",
+  "scripts": {
+    "test": "jest --env=jsdom",
+    "build": "babel src/index.js -o dist/map-array-response.js",
+    "build:publish": "yarn build && yarn publish"
+  },
+  "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-jest": "^22.0.4",
     "babel-plugin-rewire": "^1.1.0",
@@ -8,21 +18,9 @@
     "jest": "^22.0.5",
     "rewire": "^3.0.2"
   },
-  "name": "map-array-response",
-  "version": "0.0.1-c",
-  "description": "Map array responses on an object field",
-  "main": "dist/map-array-response.js",
-  "devDependencies": {
-    "parcel-bundler": "^1.4.1"
-  },
-  "scripts": {
-    "test": "jest --env=jsdom",
-    "build": "./node_modules/parcel-bundler/bin/cli.js build src/index.js"
-  },
   "keywords": [
     "GraphQL",
     "NodeJS"
   ],
-  "author": "Bing Steup",
   "license": "MIT"
 }

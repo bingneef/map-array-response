@@ -1,7 +1,11 @@
 {
-  "plugins": [
-    "rewire"
-  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "rewire"
+      ]
+    }
+  },
   "presets": [
     ["es2015"],
     "stage-3"

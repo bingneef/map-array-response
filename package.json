@@ -1,7 +1,7 @@
 {
   "author": "Bing Steup",
   "name": "map-array-response",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Map array responses on an object field",
   "main": "dist/map-array-response.js",
   "scripts": {

@@ -4,6 +4,8 @@ import rewire from "rewire";
 import {
   mapValueResponse,
   mapArrayResponse,
+  mapArrayToValueResponse,
+  mapArrayToArrayResponse,
   // eslint-disable-next-line import/named
   __RewireAPI__ as Internal
 } from ".";
@@ -153,6 +155,112 @@ describe("#mapArrayResponse", () => {
     ];
 
     expect(mapArrayResponse(keys, field, values)).toEqual(expectedResponse);
+  });
+});
+
+describe("#mapArrayToValueResponse", () => {
+  let keys;
+  let field;
+  let values;
+
+  beforeEach(() => {
+    keys = [[1, 2]];
+    field = "id";
+    values = [
+      { id: 1, value: "Chuck" },
+      { id: 2, value: "Norris" },
+      { id: null, value: "James Bond" }
+    ];
+
+    jest.unmock(".");
+  });
+
+  it("aligns the correct value to the key", () => {
+    const expectedResponse = [
+      [{ id: 1, value: "Chuck" }, { id: 2, value: "Norris" }]
+    ];
+
+    expect(mapArrayToValueResponse(keys, field, values)).toEqual(
+      expectedResponse
+    );
+  });
+
+  it("works for multiple key arrays", () => {
+    keys = [[1, 2], [], [1]];
+    const expectedResponse = [
+      [{ id: 1, value: "Chuck" }, { id: 2, value: "Norris" }],
+      [],
+      [{ id: 1, value: "Chuck" }]
+    ];
+
+    expect(mapArrayToValueResponse(keys, field, values)).toEqual(
+      expectedResponse
+    );
+  });
+
+  it("calls mapValueResponse for every key array", () => {
+    const mock = jest.fn().mockReturnValue([]);
+    Internal.__set__("mapValueResponse", mock);
+
+    mapArrayToValueResponse(keys, field, values);
+    expect(mock).toHaveBeenCalledWith(keys[0], field, values);
+  });
+});
+
+describe("#mapArrayToArrayResponse", () => {
+  let keys;
+  let field;
+  let values;
+
+  beforeEach(() => {
+    keys = [[1, 2, 3]];
+    field = "externalId";
+    values = [
+      { externalId: 1, value: "Chuck" },
+      { externalId: 2, value: "Norris" },
+      { externalId: 3, value: "Bruce" },
+      { externalId: 3, value: "Lee" },
+      { externalId: null, value: "James Bond" }
+    ];
+  });
+
+  it("aligns the correct value to the key", () => {
+    const expectedResponse = [
+      [
+        [{ externalId: 1, value: "Chuck" }],
+        [{ externalId: 2, value: "Norris" }],
+        [{ externalId: 3, value: "Bruce" }, { externalId: 3, value: "Lee" }]
+      ]
+    ];
+
+    expect(mapArrayToArrayResponse(keys, field, values)).toEqual(
+      expectedResponse
+    );
+  });
+
+  it("works for multiple key arrays", () => {
+    keys = [[1, 2, 3], [], [1]];
+    const expectedResponse = [
+      [
+        [{ externalId: 1, value: "Chuck" }],
+        [{ externalId: 2, value: "Norris" }],
+        [{ externalId: 3, value: "Bruce" }, { externalId: 3, value: "Lee" }]
+      ],
+      [],
+      [[{ externalId: 1, value: "Chuck" }]]
+    ];
+
+    expect(mapArrayToArrayResponse(keys, field, values)).toEqual(
+      expectedResponse
+    );
+  });
+
+  it("calls mapValueResponse for every key array", () => {
+    const mock = jest.fn().mockReturnValue([]);
+    Internal.__set__("mapArrayResponse", mock);
+
+    mapArrayToArrayResponse(keys, field, values);
+    expect(mock).toHaveBeenCalledWith(keys[0], field, values);
   });
 });
 

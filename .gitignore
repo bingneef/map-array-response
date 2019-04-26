@@ -7,3 +7,6 @@ yarn-error.log
 
 # External Libraries
 .coveralls.yml
+
+# Build
+dist

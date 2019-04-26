@@ -1,10 +1,19 @@
 language: node_js
 sudo: false
 node_js:
-  - 10
+  - "11.13.0"
 install:
   - yarn install
-script:
-  - yarn test
-  - yarn lint
-  - yarn prettier:check
+stages:
+  - test
+  - build
+  - lint
+jobs:
+  include:
+    - stage: test
+      script: yarn test
+    - stage: lint
+      script: yarn lint
+      script: yarn prettier:check
+    - stage: build
+      script: yarn build

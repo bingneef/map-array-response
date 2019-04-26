@@ -9,4 +9,4 @@ yarn-error.log
 .coveralls.yml
 
 # Build
-dist
+dist/*

@@ -1,28 +1,46 @@
 {
   "author": "Bing Steup",
   "name": "map-array-response",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "Map array responses on an object field",
   "main": "dist/map-array-response.js",
   "scripts": {
     "test": "jest --env=jsdom",
     "test:coveralls": "yarn test --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
-    "build": "babel src/index.js -o dist/map-array-response.js",
-    "do:publish": "yarn build && yarn test:coveralls && yarn publish"
+    "test:full": "yarn prettier:check && yarn lint && yarn test:coveralls",
+    "prettier:check": "prettier --check 'src/**/*.js'",
+    "prettier:fix": "prettier --write src/**/*.js",
+    "lint": "eslint --ext .js .",
+    "lint:fix": "yarn lint --fix",
+    "build": "yarn babel src/index.js -o dist/map-array-response.js"
   },
   "devDependencies": {
+    "@babel/cli": "^7.4.3",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
     "babel-core": "^6.26.0",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "^22.0.4",
-    "babel-plugin-rewire": "^1.1.0",
+    "babel-plugin-rewire": "^1.2.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "coveralls": "^3.0.0",
-    "jest": "^22.0.5",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-plugin-import": "^2.17.2",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "jest": "^24.7.1",
+    "prettier": "^1.17.0",
     "rewire": "^3.0.2"
   },
   "keywords": [
-    "GraphQL",
     "NodeJS"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  }
 }

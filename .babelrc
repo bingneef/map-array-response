@@ -1,15 +1,8 @@
 {
   "env": {
     "test": {
-      "plugins": [
-        "rewire"
-      ]
+      "plugins": ["rewire"]
     }
   },
-  "presets": [
-    ["es2015"],
-    "stage-3"
-  ]
+  "presets": ["@babel/preset-env"]
 }
-
-

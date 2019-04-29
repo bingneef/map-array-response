@@ -25,6 +25,5 @@ jobs:
           secure: Qm/Wl+gqht8OticrUGmPoYvKl0gwKolC19nk2xK7Kbuybt6Ob083iGt1dg05m/E+bCXd5aYl6TVggIYffUemruEUgGucEI9fo4ITZo7Tu3ZJTAryLZG284h+ofTqvTGN1E2A4l7nX0XwR2TaISAXE/vzJU8uSJV1LmV/MgTUCOzDgQah/sOaeOlCUrXeGBJPZkxjE7jE8OSP1Bsq16LGL2c2TYWBe83pBGdlo5tjga5+P+jeQK/mAFXn3wKPH9sJmwoG6PmXcidsobBbwSih9p7Ms0SIUHnpYx7Q1l0CMzSYUMirfalUPwaqrDvoY3TUa03Mgyy4e3B5uRZB+diVhikIDr65JZhdcceZn3hSpsL0UmjRCgNLOw6wudARYR6bKuZxUADMvhx82S7mw39xtKv0C75AFTbZb5NQEKgi1FaEDobpb+lvSHc5MEAjUUaG/xSzBeTPMqxkSdpl6BjisUg/3T9fdC/Mm45WKyPHfsoJPu8hhyfgORvjrocDNlLNUqSyGVuWU9sVlo6nFahU+8uXJBJXRewqDYO1JGZOT6L4wLymMk7cUNYiRB3m7mPx4x4xGFbDHGItPGN3VfV1Gde96ZLmsM7W8JyGuzNcQuUuAdsi3mRSKRvwLeAVQVF1dOxaU7WJ5hHvKQX11mngTFjabulvTQ62+6BkOhc+Soo=
         on:
           tags: true
-          branch: master
           skip_cleanup: true
           repo: bingneef/map-array-response
